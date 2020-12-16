@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/models/article_model.dart';
 
 class ArticleCustomTile extends StatelessWidget {
-  final String articleName;
-  final String articlePrice;
-  final String articleDescrition;
-  final String articleCategory;
-  final String articleBrandName;
+  final Article article;
 
-  const ArticleCustomTile({Key key, this.articleName, this.articlePrice, this.articleDescrition, this.articleCategory, this.articleBrandName}) : super(key: key);
+  const ArticleCustomTile({Key key, this.article}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width - 40,
       height: 180,
       color: Colors.white,
       child: Row(
@@ -30,16 +27,19 @@ class ArticleCustomTile extends StatelessWidget {
               )
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Name: $articleName'),
-              Text('Category: $articleCategory'),
-              Text('Brand name: $articleBrandName'),
-              Text('Price: $articlePrice'),
-              Text('Description: $articleDescrition'),
-            ],
+          Container(
+            width: MediaQuery.of(context).size.width/2.1,
+            height: 150,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Name: ${article.name}'),
+                Text('Category: ${article.category}'),
+                Text('Brand name: ${article.brandName}'),
+                Text('Price: ${article.price}'),
+                Text('Description: ${article.description}'),
+              ],
+            ),
           )
         ],
       ),

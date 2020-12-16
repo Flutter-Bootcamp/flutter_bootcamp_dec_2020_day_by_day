@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/screens/homepage_screen.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Bootcamp 2020',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          color: Colors.black,
+          elevation: 10
+        )
       ),
       home: HomePage(),
     );

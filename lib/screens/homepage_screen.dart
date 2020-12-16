@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bootcamp_2020/screens/profile.dart';
-import 'package:flutter_bootcamp_2020/widgets/article_custom_card.dart';
-
+import 'package:flutter_bootcamp_2020/screens/profile_screen.dart';
 import 'cart_screen.dart';
 import 'market_screen.dart';
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -57,7 +54,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Profile'
           )
         ],
-        currentIndex: 0,
+        currentIndex: _selectedIndex,
         selectedFontSize: 13,
         unselectedFontSize: 13,
         onTap: _onItemTap,
