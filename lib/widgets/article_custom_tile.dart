@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
+import 'package:flutter_bootcamp_2020/screens/article_screen.dart';
 
 enum TileType {list, cart}
 
@@ -12,24 +13,31 @@ class ArticleCustomTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 185,
-      child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            bodyTile(context),
-            if(tileType == TileType.list)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Delete from cart'),
-                  Text('${article.price}')
-                ],
-              )
-          ]
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ArticleScreen(article: article,)
+        ));
+      },
+      child: Container(
+        height: 185,
+        child: Card(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              bodyTile(context),
+              if(tileType == TileType.list)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Delete from cart'),
+                    Text('${article.price}')
+                  ],
+                )
+            ]
+          )
         )
-      )
+      ),
     );
   }
 
@@ -44,7 +52,7 @@ class ArticleCustomTile extends StatelessWidget {
               border: Border.all(),
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                  image: NetworkImage('https://www.aisopos.it/wp-content/uploads/2020/03/Rossella-Cavioni-17-683x1024.jpeg')
+                  image: NetworkImage(article.imgUrl)
               )
           ),
         ),

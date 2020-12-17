@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/screens/homepage_screen.dart';
+import 'package:flutter_bootcamp_2020/util/theme_features.dart';
 
 
 void main() {
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
           color: Colors.black,
-          elevation: 10
+          elevation: 10,
+          textTheme: TextTheme(
+            headline6: ThemeFeatures.boldWhite
+          )
         )
       ),
       home: HomePage(),

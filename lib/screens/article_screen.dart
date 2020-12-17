@@ -24,7 +24,7 @@ class ArticleScreen extends StatelessWidget {
           ),
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -33,14 +33,14 @@ class ArticleScreen extends StatelessWidget {
                   Text(article.price.toString()),
                   Text(article.description),
                   Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     height: 40,
                     child: FlatButton(
                       color: Colors.black,
-                      child: Text('Add to cart', style: TextStyle(color: Colors.white),),
+                      child: const Text('Add to cart', style: TextStyle(color: Colors.white),),
                       onPressed: (){},
                     ),
                   ),
-                  SizedBox(height: 5),
                   Container(
                     height: 40,
                     decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class ArticleScreen extends StatelessWidget {
                       border: Border.all()
                     ),
                     child: FlatButton(
-                      child: Text('Add to cart'),
+                      child: const Text('Buy now'),
                       onPressed: (){},
                     ),
                   ),

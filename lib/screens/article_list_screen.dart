@@ -60,20 +60,26 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CupertinoColors.systemGrey4,
-      //appBar: AppBar(title: const Text('Flutter Bootcamp 2020')),
+      appBar: AppBar(title: const Text('Flutter Bootcamp 2020')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             alignment: Alignment.center,
             height: 80,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all()
+            ),
             child: PopupMenuButton<String>(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text( orderByFilter=='No filter'
                       ? 'Order by'
                       : orderByFilter
                   ),
+                  const SizedBox(width: 5,),
                   Icon(Icons.arrow_drop_down_circle)
                 ],
               ),
