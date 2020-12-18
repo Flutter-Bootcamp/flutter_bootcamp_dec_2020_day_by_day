@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-class imagePick extends StatefulWidget {
+class ImagePick extends StatefulWidget {
   @override
-  imagePick_State createState() => imagePick_State();
+  ImagePickState createState() => ImagePickState();
   var _image;
   var url;
 }
 
-class imagePick_State extends State<imagePick> {
+class ImagePickState extends State<ImagePick> {
   final Future<FirebaseApp> _inizialization = Firebase.initializeApp();
 
   @override

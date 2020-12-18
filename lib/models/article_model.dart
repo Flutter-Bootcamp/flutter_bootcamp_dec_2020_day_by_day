@@ -1,3 +1,9 @@
+
+import 'dart:convert';
+
+List<Article> articlesFromJson(String str) =>
+    List<Article>.from(json.decode(str).map((x) => Article.fromJson(x)));
+
 class Article extends Comparable{
   String id;
   String name;
@@ -7,6 +13,29 @@ class Article extends Comparable{
   String brandName;
   String imgUrl;
   int sellerId;
+
+
+  Article.fromJson(Map<String, dynamic> json){
+    this.id = json['article_id'];
+    this.name = json['name'];
+    this.brandName = json['brand_name'];
+    this.category =json['category'];
+    this.price = json['price'];
+    this.description = json['description'];
+    this.imgUrl = json['image'];
+    this.sellerId = json['seller_id'];
+  }
+
+  Map<String, dynamic> toJson() => {
+    'category': category,
+    'name': name,
+    'price': price,
+    'description': description,
+    'image': imgUrl,
+    'brand_name': brandName,
+    'seller_id': sellerId
+  };
+
 
   @override
   int compareTo(other){

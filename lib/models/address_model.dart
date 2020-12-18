@@ -6,4 +6,19 @@ class Address {
   String region;
 
   Address({this.street, this.city, this.postalCode, this.state, this.region});
+  Address.uno(){
+    street = 'Via Mazzini 14';
+    city = 'Vaprio d\'Adda';
+    postalCode = '20069';
+    state = 'MI';
+    region = 'Lombardia';
+  }
+
+  Address.due(){
+    street = 'Via Gioberti 9';
+    city = 'Cassano d\'Adda';
+    postalCode = '20062';
+    state = 'MI';
+    region = 'Lombardia';
+  }
 }
