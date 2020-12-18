@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/widgets/article_custom_tile.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,12 @@ class Cart extends StatelessWidget {
                   ),
                   child: FlatButton(
                     child: Text('Buy all', style: TextStyle(color: Colors.white),),
-                    onPressed: (){},
+                    onPressed: (){
+                      /*cartCtrl.cartList.forEach((article) {
+                        ArticleListController.to.deleteArticle(article);
+                        cartCtrl.deleteArticleFromCart(article);
+                      });*/
+                    },
                   ),
                 ),
                 Container(
@@ -40,7 +46,9 @@ class Cart extends StatelessWidget {
                   ),
                   child: FlatButton(
                     child: Text('Empty Cart'),
-                    onPressed:(){},
+                    onPressed:(){
+                      cartCtrl.emptyCart();
+                    },
                   ),
                 )
               ],

@@ -16,14 +16,12 @@ class UploadArticleScreen extends StatefulWidget {
 }
 
 class _UploadArticleScreenState extends State<UploadArticleScreen> {
-  String imgFiles;
-  int selectedIndex;
+  String image;
   Article newArticle;
 
   @override
   void initState() {
     super.initState();
-    selectedIndex=0;
     newArticle = Article();
   }
 
@@ -37,7 +35,7 @@ class _UploadArticleScreenState extends State<UploadArticleScreen> {
 
     if (result!=null) {
       setState(() {
-        imgFiles = result;
+        image = result;
         newArticle.imgUrl = result;
         //newArticle.imgUrl = imgFiles;
       });
@@ -84,23 +82,7 @@ Future<void> postArticle() async{
     );
   }
 
-  GestureDetector miniCard(int index){
-    return GestureDetector(
-      onTap: (){
-        setState(() {
-          print(selectedIndex);
-          selectedIndex = index;
-          print(selectedIndex);
-        });
-      },
-      child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              border: Border.all(color: selectedIndex==index? Colors.white : Colors.black)
-          ),
-          child: Image.network(imgFiles)),
-    );
-  }
+
 
   Card setArticleFieldCard(){
     return Card(
@@ -255,7 +237,7 @@ Future<void> postArticle() async{
 
             Padding(
                 padding: const EdgeInsets.fromLTRB(30,20,30,20),
-                child: imgFiles!=null ? Column(
+                child: image!=null ? Column(
                   children: [
                     Container(
                       padding: EdgeInsets.all(2),
@@ -265,7 +247,7 @@ Future<void> postArticle() async{
                         children: [
                           Container(
                               height: 300,
-                              child: Image.network(imgFiles, fit: BoxFit.fitHeight,)),
+                              child: Image.network(image, fit: BoxFit.fitHeight,)),
                         ],
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:flutter_bootcamp_2020/controllers/address_delivery_controller.da
 import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/screens/profile_screen.dart';
+import 'package:flutter_bootcamp_2020/screens/upload_article_screen.dart';
 import 'package:get/get.dart';
 import 'cart_screen.dart';
 import 'market_screen.dart';
@@ -40,52 +41,62 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(()=>Scaffold(
       backgroundColor: CupertinoColors.systemGrey5,
       appBar: AppBar(title: const Text('Flutter Bootcamp 2020')),
-      body: _pages.elementAt(_selectedIndex),
-      bottomNavigationBar: Obx(
-          ()=>BottomNavigationBar(
-            elevation: 5,
-            fixedColor: Colors.black,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home'
-              ),
-              BottomNavigationBarItem(
-                  icon: cartController.cartList.isEmpty
-                      ? Icon(CupertinoIcons.shopping_cart)
-                  : Stack(
-                    children: [
-                      Icon(CupertinoIcons.cart_fill),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 15,
-                        width: 15,
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle
-                        ),
-                        child: Text(cartController.cartList.length.toString(),
-                          style: TextStyle(color: Colors.white, fontSize: 12),
-                        ),
-                      ),
-                    ],
-                  ),
-                  label: 'Cart'
-              ),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.profile_circled),
-                  label: 'Profile'
-              )
-            ],
-            currentIndex: _selectedIndex,
-            selectedFontSize: 13,
-            unselectedFontSize: 13,
-            onTap: _onItemTap,
-          )
+      body: articleListController.isLoading.value
+          ? Center(
+          child: CircularProgressIndicator()
+      )
+          :_pages.elementAt(_selectedIndex),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(CupertinoIcons.plus),
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context)=>UploadArticleScreen()
+          ));
+        },
       ),
-    );
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 5,
+        fixedColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home'
+          ),
+          BottomNavigationBarItem(
+              icon: cartController.cartList.isEmpty
+                  ? Icon(CupertinoIcons.shopping_cart)
+                  : Stack(
+                children: [
+                  Icon(CupertinoIcons.cart_fill),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 15,
+                    width: 15,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle
+                    ),
+                    child: Text(cartController.cartList.length.toString(),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+              label: 'Cart'
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.profile_circled),
+              label: 'Profile'
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedFontSize: 13,
+        unselectedFontSize: 13,
+        onTap: _onItemTap,
+      ),
+    ));
   }
 }

@@ -1,20 +1,34 @@
 import 'package:flutter_bootcamp_2020/global.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
+import 'package:flutter_bootcamp_2020/services/remote_services.dart';
 import 'package:get/get.dart';
 
 class ArticleListController extends GetxController {
   final articleList = List<Article>().obs;
   final tailoringList = List<Article>().obs;
   final jewelryList = List<Article>().obs;
+  final isLoading = false.obs;
 
   static ArticleListController get to => Get.find<ArticleListController>();
 
   @override
   void onInit() {
     super.onInit();
-    articleList.assignAll(list);
-    tailoringList.assignAll(articleList.where((article) => article.category == 'Tailoring'));
-    jewelryList.assignAll(articleList.where((article) => article.category == 'Jewelry'));
+    _fetchArticles();
+  }
+
+  _fetchArticles() async{
+    try {
+      isLoading.value = true;
+      var articles = await RemoteService.fetchArticles();
+      if(articles != null)  {
+        articleList.assignAll(articles);
+        tailoringList.assignAll(articleList.where((article) => article.category == 'Tailoring'));
+        jewelryList.assignAll(articleList.where((article) => article.category == 'Jewelry'));
+      }
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   deleteArticle(Article article) {

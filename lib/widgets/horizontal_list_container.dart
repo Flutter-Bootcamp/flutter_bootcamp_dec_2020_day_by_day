@@ -41,7 +41,7 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
         ()=>GestureDetector(
           onTap: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ArticleListScreen(list: list,)));
-            Get.to(ArticleListScreen());
+            //Get.to(ArticleListScreen());
           },
           child: Card(
             child: Container(

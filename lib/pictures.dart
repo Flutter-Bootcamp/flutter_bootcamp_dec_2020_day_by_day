@@ -75,6 +75,7 @@ class ImagePickState extends State<ImagePick> {
 
   Future<void> uploadOnFirebaseAndGetLink(File image) async {
     String filename = DateTime.now().toString();
+
     var storage = await firebase_storage.FirebaseStorage.instance;
 
     var uploadData = await firebase_storage.FirebaseStorage.instance
