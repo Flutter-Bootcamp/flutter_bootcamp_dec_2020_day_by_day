@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/screens/homepage_screen.dart';
 import 'package:flutter_bootcamp_2020/util/theme_features.dart';
+import 'package:get/get.dart';
 
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Bootcamp 2020',
       theme: ThemeData(
         primarySwatch: Colors.blue,

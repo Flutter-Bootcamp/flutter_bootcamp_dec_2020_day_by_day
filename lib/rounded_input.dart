@@ -30,6 +30,7 @@ class _RoundedInputState extends State<RoundedInput> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
+      margin: EdgeInsets.only(top:10),
       child: TextField(
         autofocus: false,
         controller: _controller,

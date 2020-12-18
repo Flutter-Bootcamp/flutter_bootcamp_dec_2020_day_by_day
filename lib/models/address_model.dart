@@ -6,6 +6,15 @@ class Address {
   String region;
 
   Address({this.street, this.city, this.postalCode, this.state, this.region});
+
+  Address.fromAddress(Address address){
+    street = address.street;
+    city = address.city;
+    postalCode = address.postalCode;
+    state = address.state;
+    region = address.region;
+  }
+
   Address.uno(){
     street = 'Via Mazzini 14';
     city = 'Vaprio d\'Adda';

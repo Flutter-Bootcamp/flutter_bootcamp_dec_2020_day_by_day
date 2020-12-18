@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
 import 'package:flutter_bootcamp_2020/screens/article_screen.dart';
 
@@ -20,19 +21,27 @@ class ArticleCustomTile extends StatelessWidget {
         ));
       },
       child: Container(
-        height: 185,
+        height: tileType == TileType.cart? 210 : 185,
         child: Card(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               bodyTile(context),
-              if(tileType == TileType.list)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Delete from cart'),
-                    Text('${article.price}')
-                  ],
+              if(tileType == TileType.cart)
+                Container(
+                  margin: const EdgeInsets.fromLTRB(20, 10, 20, 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                          child: const Text('Delete from cart'),
+                        onTap: (){
+                            CartController.to.deleteArticleFromCart(article);
+                        },
+                      ),
+                      Text('${article.price}')
+                    ],
+                  ),
                 )
             ]
           )

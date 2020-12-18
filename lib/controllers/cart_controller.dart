@@ -8,8 +8,10 @@ class CartController extends GetxController {
   static CartController get to => Get.find<CartController>();
 
   addArticleToCart(Article article){
-    cartList.add(article);
-    cartAmount(cartAmount.value + article.price);
+    if(cartList.indexOf(article) == -1){
+      cartList.add(article);
+      cartAmount(cartAmount.value + article.price);
+    }
   }
 
   deleteArticleFromCart (Article article) {

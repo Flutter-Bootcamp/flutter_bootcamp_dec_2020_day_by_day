@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
 
 class ArticleScreen extends StatelessWidget {
@@ -38,7 +39,10 @@ class ArticleScreen extends StatelessWidget {
                     child: FlatButton(
                       color: Colors.black,
                       child: const Text('Add to cart', style: TextStyle(color: Colors.white),),
-                      onPressed: (){},
+                      onPressed: (){
+                        CartController.to.addArticleToCart(article);
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                   Container(

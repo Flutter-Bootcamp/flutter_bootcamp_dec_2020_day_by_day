@@ -1,5 +1,6 @@
 class Constants {
   static const List<String> CATEGORIES = <String> [
+    'All',
     'Tailoring',
     'Jewelry',
   ];

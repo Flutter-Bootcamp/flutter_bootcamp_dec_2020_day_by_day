@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
 import 'package:flutter_bootcamp_2020/pictures.dart';
-import 'package:flutter_bootcamp_2020/screens/upload_images_screen.dart';
 import 'package:flutter_bootcamp_2020/util/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;

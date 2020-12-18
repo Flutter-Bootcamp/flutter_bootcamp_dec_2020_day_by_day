@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/address_delivery_controller.dart';
 import 'package:flutter_bootcamp_2020/models/address_model.dart';
+import 'package:flutter_bootcamp_2020/screens/edit_address.dart';
 
 class AddressCard extends StatelessWidget {
   final Address address;
@@ -11,7 +13,6 @@ class AddressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: 200,
         decoration: BoxDecoration(
           color: CupertinoColors.systemGrey4,
         ),
@@ -26,8 +27,21 @@ class AddressCard extends StatelessWidget {
                   Text('Address'),
                   Row(
                     children: [
-                      Icon(CupertinoIcons.settings),
-                      Icon(Icons.delete_outline)
+                       GestureDetector(
+                           child: Icon(CupertinoIcons.settings),
+                         onTap: ()=>Navigator.of(context).push(
+                             MaterialPageRoute(
+                                 builder: (BuildContext context)=> EditAddressPage(
+                                   address: address,
+                                   type: AddressPageType.edit,
+                                 ))),
+                       ),
+                      if(AddressDeliveryController.to.addressList.length>1)
+                      GestureDetector(
+                          onTap: ()=> AddressDeliveryController.to.deleteAddress(address),
+                          child: Icon(
+                              Icons.delete_outline)
+                      )
                     ],
                   )
                 ],
