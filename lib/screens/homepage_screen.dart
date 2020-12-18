@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/controllers/address_delivery_controller.dart';
+import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/screens/profile_screen.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _pages;
   final addressController = Get.put(AddressDeliveryController());
   final cartController = Get.put(CartController());
+  final articleListController = Get.put(ArticleListController());
 
   @override
   void initState(){

@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/models/article_model.dart';
 
 class ArticleScreen extends StatelessWidget {
   final Article article;
+  final ArticleListController controller = ArticleListController.to;
 
-  const ArticleScreen({Key key, this.article}) : super(key: key);
+  ArticleScreen({Key key, this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,10 @@ class ArticleScreen extends StatelessWidget {
                     ),
                     child: FlatButton(
                       child: const Text('Buy now'),
-                      onPressed: (){},
+                      onPressed: (){
+                        controller.deleteArticle(article);
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                 ],
