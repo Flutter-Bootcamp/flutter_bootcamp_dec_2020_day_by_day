@@ -26,7 +26,7 @@ class EditAddressPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         children: [
           RoundedInput(
-            key: ObjectKey('Street'),
+            key: const ObjectKey('Street'),
             hintText: 'Street',
             onChanged: (value){
               newAddress?.street = value;
@@ -34,7 +34,7 @@ class EditAddressPage extends StatelessWidget {
             initialValue: newAddress?.street ?? '',
           ),
           RoundedInput(
-            key: ObjectKey('City'),
+            key: const ObjectKey('City'),
             hintText: 'City',
             onChanged: (value){
               newAddress?.city = value;
@@ -42,7 +42,7 @@ class EditAddressPage extends StatelessWidget {
             initialValue: newAddress?.city ?? '',
           ),
           RoundedInput(
-            key: ObjectKey('Region'),
+            key: const ObjectKey('Region'),
 
             hintText: 'Region',
             onChanged: (value){
@@ -51,7 +51,7 @@ class EditAddressPage extends StatelessWidget {
             initialValue: newAddress?.region ?? '',
           ),
           RoundedInput(
-            key: ObjectKey('State'),
+            key: const ObjectKey('State'),
             hintText: 'State',
             onChanged: (value){
               newAddress?.state = value;
@@ -59,7 +59,7 @@ class EditAddressPage extends StatelessWidget {
             initialValue: newAddress?.state ?? '',
           ),
           RoundedInput(
-            key: ObjectKey('Postal Code'),
+            key: const ObjectKey('Postal Code'),
 
             hintText: 'Postal Code',
             onChanged: (value){

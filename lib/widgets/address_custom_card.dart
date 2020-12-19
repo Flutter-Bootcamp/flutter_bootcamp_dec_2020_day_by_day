@@ -11,59 +11,56 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        decoration: BoxDecoration(
-          color: CupertinoColors.systemGrey4,
-        ),
-        child: Column(
-          children: [
-            Container(
-              height: 40,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Address'),
-                  Row(
-                    children: [
-                       GestureDetector(
-                           child: Icon(CupertinoIcons.settings),
-                         onTap: ()=>Navigator.of(context).push(
-                             MaterialPageRoute(
-                                 builder: (BuildContext context)=> EditAddressPage(
-                                   address: address,
-                                   type: AddressPageType.edit,
-                                 ))),
-                       ),
-                      if(AddressDeliveryController.to.addressList.length>1)
-                      GestureDetector(
-                          onTap: ()=> AddressDeliveryController.to.deleteAddress(address),
-                          child: Icon(
-                              Icons.delete_outline)
-                      )
-                    ],
-                  )
-                ],
-              ),
+    return Container(
+      decoration: BoxDecoration(
+        color: CupertinoColors.systemGrey4,
+      ),
+      child: Column(
+        children: [
+          Container(
+            height: 40,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Address'),
+                Row(
+                  children: [
+                     GestureDetector(
+                         child: const Icon(CupertinoIcons.settings),
+                       onTap: ()=>Navigator.of(context).push(
+                           MaterialPageRoute(
+                               builder: (BuildContext context)=> EditAddressPage(
+                                 address: address,
+                                 type: AddressPageType.edit,
+                               ))),
+                     ),
+                    if(AddressDeliveryController.to.addressList.length>1)
+                    GestureDetector(
+                        onTap: ()=> AddressDeliveryController.to.deleteAddress(address),
+                        child: const Icon(Icons.delete_outline)
+                    )
+                  ],
+                )
+              ],
             ),
-            Container(height: 0.5, width: double.infinity, color: CupertinoColors.inactiveGray,),
-            Container(
-              padding: EdgeInsets.fromLTRB(20,10,20,20),
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          Container(height: 0.5, width: double.infinity, color: CupertinoColors.inactiveGray,),
+          Container(
+            padding: const EdgeInsets.fromLTRB(20,10,20,20),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
 
-                children: [
-                  Text('${address?.street}'),
-                  Text('${address?.city} (${address?.state})'),
-                  Text('${address?.postalCode}'),
-                  Text('${address?.region}'),
-                ],
-              ),
-            )
-          ],
-        ),
+              children: [
+                Text('${address?.street}'),
+                Text('${address?.city} (${address?.state})'),
+                Text('${address?.postalCode}'),
+                Text('${address?.region}'),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

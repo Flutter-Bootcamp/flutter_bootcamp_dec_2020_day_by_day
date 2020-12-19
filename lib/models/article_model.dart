@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 List<Article> articlesFromJson(String str) =>
@@ -16,14 +15,14 @@ class Article extends Comparable{
 
 
   Article.fromJson(Map<String, dynamic> json){
-    this.id = json['article_id'];
-    this.name = json['name'];
-    this.brandName = json['brand_name'];
-    this.category =json['category'];
-    this.price = json['price'];
-    this.description = json['description'];
+    this.id = json['article_id'] ?? 'error';
+    this.name = json['name'] ?? 'error';
+    this.brandName = json['brand_name'] ?? 'error';
+    this.category =json['category'] ?? 'error';
+    this.price = json['price'] ?? 0;
+    this.description = json['description'] ?? 'error';
     this.imgUrl = json['image'];
-    this.sellerId = json['seller_id'];
+    this.sellerId = json['seller_id'] ?? 0;
   }
 
   Map<String, dynamic> toJson() => {

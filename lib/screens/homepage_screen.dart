@@ -45,12 +45,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: CupertinoColors.systemGrey5,
       appBar: AppBar(title: const Text('Flutter Bootcamp 2020')),
       body: articleListController.isLoading.value
-          ? Center(
-          child: CircularProgressIndicator()
+          ? const Center(
+          child: const CircularProgressIndicator()
       )
           :_pages.elementAt(_selectedIndex),
       floatingActionButton: FloatingActionButton(
-        child: Icon(CupertinoIcons.plus),
+        backgroundColor: Colors.black,
+        child: const Icon(CupertinoIcons.plus),
         onPressed: (){
           Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context)=>UploadArticleScreen()
@@ -61,16 +62,16 @@ class _HomePageState extends State<HomePage> {
         elevation: 5,
         fixedColor: Colors.black,
         items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+          const BottomNavigationBarItem(
+              icon: const Icon(Icons.home),
               label: 'Home'
           ),
           BottomNavigationBarItem(
               icon: cartController.cartList.isEmpty
-                  ? Icon(CupertinoIcons.shopping_cart)
+                  ? const Icon(CupertinoIcons.shopping_cart)
                   : Stack(
                 children: [
-                  Icon(CupertinoIcons.cart_fill),
+                  const Icon(CupertinoIcons.cart_fill),
                   Container(
                     alignment: Alignment.center,
                     height: 15,
@@ -80,15 +81,15 @@ class _HomePageState extends State<HomePage> {
                         shape: BoxShape.circle
                     ),
                     child: Text(cartController.cartList.length.toString(),
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),
                 ],
               ),
               label: 'Cart'
           ),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.profile_circled),
+          const BottomNavigationBarItem(
+              icon: const Icon(CupertinoIcons.profile_circled),
               label: 'Profile'
           )
         ],

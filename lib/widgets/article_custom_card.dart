@@ -27,7 +27,9 @@ class ArticleCustomCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5)
               ),
-              child: ClipRRect(
+              child: article.imgUrl == null
+                  ? const Icon(Icons.error_outline_rounded)
+                  : ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: Image.network(article.imgUrl,
                 fit: BoxFit.cover,),
@@ -44,11 +46,11 @@ class ArticleCustomCard extends StatelessWidget {
                   color: Colors.black.withOpacity(0.6),
                 ),
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                   children: [
-                    Text(article.price.toString(), style: TextStyle(color: Colors.white)),
+                    Text(article.price.toString(), style: const TextStyle(color: Colors.white)),
                     Text(article.description, overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.white),)
+                    style: const TextStyle(color: Colors.white),)
                   ],
                 ),
               ),

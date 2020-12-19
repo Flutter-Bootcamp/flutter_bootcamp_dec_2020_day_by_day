@@ -80,7 +80,7 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
                       : orderByFilter
                   ),
                   const SizedBox(width: 5,),
-                  Icon(Icons.arrow_drop_down_circle)
+                  const Icon(Icons.arrow_drop_down_circle)
                 ],
               ),
               onSelected: _orderBy,

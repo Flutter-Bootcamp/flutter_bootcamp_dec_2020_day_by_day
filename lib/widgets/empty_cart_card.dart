@@ -4,15 +4,15 @@ class EmptyCartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
+      child: SizedBox(
         height: 250,
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Currently your cart is empty'),
+            const Text('Currently your cart is empty'),
             const SizedBox(height: 10,),
-            Icon(Icons.shopping_cart, size: 50,)
+            const Icon(Icons.shopping_cart, size: 50,)
           ],
         ),
       ),

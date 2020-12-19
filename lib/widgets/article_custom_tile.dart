@@ -39,9 +39,9 @@ class ArticleCustomTile extends StatelessWidget {
                             CartController.to.deleteArticleFromCart(article);
                         },
                       ),
-                      Text('${article.price}')
-                    ],
-                  ),
+                      Text('${article.price}', overflow: TextOverflow.ellipsis)
+                    ]
+                  )
                 )
             ]
           )

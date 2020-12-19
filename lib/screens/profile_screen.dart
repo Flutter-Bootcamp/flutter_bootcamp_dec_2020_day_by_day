@@ -10,7 +10,7 @@ class Profile extends StatelessWidget {
     return GetBuilder<AddressDeliveryController>(
         builder: (controller) => Card(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             height: 200.0 * controller.addressList.length,
             child: Column(
               children: [

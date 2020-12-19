@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
@@ -53,6 +52,7 @@ Future<void> postArticle() async{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: CupertinoColors.systemGrey5,
       appBar: AppBar(title: Text('SoItaly')),
       body: Padding(
