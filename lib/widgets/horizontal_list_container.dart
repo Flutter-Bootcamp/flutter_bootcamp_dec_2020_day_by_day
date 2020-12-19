@@ -11,7 +11,8 @@ class HorizontalListContainer extends StatefulWidget {
   const HorizontalListContainer({Key key, this.category}) : super(key: key);
 
   @override
-  _HorizontalListContainerState createState() => _HorizontalListContainerState();
+  _HorizontalListContainerState createState() =>
+      _HorizontalListContainerState();
 }
 
 class _HorizontalListContainerState extends State<HorizontalListContainer> {
@@ -21,11 +22,11 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
   @override
   void initState() {
     super.initState();
-    switch(widget.category) {
-      case('Tailoring'):
+    switch (widget.category) {
+      case ('Tailoring'):
         articleList = controller.tailoringList;
         break;
-      case('Jewelry'):
+      case ('Jewelry'):
         articleList = controller.jewelryList;
         break;
       default:
@@ -36,41 +37,44 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-        ()=>GestureDetector(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ArticleListScreen(list: articleList,)));
-            //Get.to(ArticleListScreen());
-          },
-          child: Card(
-            child: Container(
-              height: articleList.isEmpty? 0 : 320,
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    children: [
-                      Text(widget.category),
-                      const Icon(Icons.arrow_right_outlined)
-                    ],
-                  ),
-                  Container(
-                    height: 250,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: articleList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ArticleCustomCard(article: articleList[index]);
-                      },
+    return Obx(() => articleList.isEmpty
+        ? const SizedBox()
+        : GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => ArticleListScreen(
+                        list: articleList,
+                      )));
+              //Get.to(ArticleListScreen());
+            },
+            child: Card(
+              child: Container(
+                height: 320,
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      children: [
+                        Text(widget.category),
+                        const Icon(Icons.arrow_right_outlined)
+                      ],
                     ),
-                  )
-                ],
+                    Container(
+                      height: 250,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: articleList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ArticleCustomCard(article: articleList[index]);
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        )
-    );
+          ));
   }
 }
