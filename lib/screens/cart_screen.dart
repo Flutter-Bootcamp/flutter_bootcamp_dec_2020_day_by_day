@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2020/controllers/article_list_controller.dart';
 import 'package:flutter_bootcamp_2020/controllers/cart_controller.dart';
 import 'package:flutter_bootcamp_2020/widgets/article_custom_tile.dart';
+import 'package:flutter_bootcamp_2020/widgets/empty_cart_card.dart';
 import 'package:get/get.dart';
 
 class Cart extends StatelessWidget {
@@ -30,10 +32,10 @@ class Cart extends StatelessWidget {
                   child: FlatButton(
                     child: const Text('Buy all', style: const TextStyle(color: Colors.white),),
                     onPressed: (){
-                      /*cartCtrl.cartList.forEach((article) {
+                      cartCtrl.cartList.forEach((article) {
                         ArticleListController.to.deleteArticle(article);
-                        cartCtrl.deleteArticleFromCart(article);
-                      });*/
+                      });
+                      cartCtrl.emptyCart();
                     },
                   ),
                 ),
@@ -47,13 +49,15 @@ class Cart extends StatelessWidget {
                     child: const Text('Empty Cart'),
                     onPressed:(){
                       cartCtrl.emptyCart();
-                    },
-                  ),
+                    }
+                  )
                 )
-              ],
-            ),
-          ),
+              ]
+            )
+          )
         ),
+        if(cartCtrl.cartList.length==0)
+          EmptyCartCard(),
         Flexible(
           child: ListView.builder(
             itemCount: cartCtrl.cartList.length,
@@ -62,10 +66,10 @@ class Cart extends StatelessWidget {
                 article: cartCtrl.cartList[index],
                 tileType: TileType.cart,
               );
-            },
-          ),
+            }
+          )
         )
-      ],
+      ]
     ));
   }
 }

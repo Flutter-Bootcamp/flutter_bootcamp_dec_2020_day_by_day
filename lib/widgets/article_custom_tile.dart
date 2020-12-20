@@ -14,7 +14,7 @@ class ArticleCustomTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return article.imgUrl==null? const SizedBox() : GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => ArticleScreen(article: article,)
@@ -75,7 +75,7 @@ class ArticleCustomTile extends StatelessWidget {
               Text('Category: ${article.category}'),
               Text('Brand name: ${article.brandName}'),
               Text('Price: ${article.price}'),
-              Text('Description: ${article.description}'),
+              Text('Description: ${article.description}', overflow: TextOverflow.ellipsis,),
             ],
           ),
         )

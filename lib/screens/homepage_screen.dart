@@ -10,6 +10,11 @@ import 'cart_screen.dart';
 import 'market_screen.dart';
 
 class HomePage extends StatefulWidget {
+
+  final addressController = Get.put(AddressDeliveryController());
+  final cartController = Get.put(CartController());
+  final articleListController = Get.put(ArticleListController());
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -17,9 +22,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex;
   List<Widget> _pages;
-  final addressController = Get.put(AddressDeliveryController());
-  final cartController = Get.put(CartController());
-  final articleListController = Get.put(ArticleListController());
 
   @override
   void initState(){
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     return Obx(()=>Scaffold(
       backgroundColor: CupertinoColors.systemGrey5,
       appBar: AppBar(title: const Text('Flutter Bootcamp 2020')),
-      body: articleListController.isLoading.value
+      body: widget.articleListController.isLoading.value
           ? const Center(
           child: const CircularProgressIndicator()
       )
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               label: 'Home'
           ),
           BottomNavigationBarItem(
-              icon: cartController.cartList.isEmpty
+              icon: widget.cartController.cartList.isEmpty
                   ? const Icon(CupertinoIcons.shopping_cart)
                   : Stack(
                 children: [
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.red,
                         shape: BoxShape.circle
                     ),
-                    child: Text(cartController.cartList.length.toString(),
+                    child: Text(widget.cartController.cartList.length.toString(),
                       style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),

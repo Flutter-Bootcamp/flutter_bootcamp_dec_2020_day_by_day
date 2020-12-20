@@ -45,7 +45,6 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
                   builder: (BuildContext context) => ArticleListScreen(
                         list: articleList,
                       )));
-              //Get.to(ArticleListScreen());
             },
             child: Card(
               child: Container(
@@ -59,7 +58,7 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
                       children: [
                         Text(widget.category),
                         const Icon(Icons.arrow_right_outlined)
-                      ],
+                      ]
                     ),
                     Container(
                       height: 250,
@@ -68,13 +67,13 @@ class _HorizontalListContainerState extends State<HorizontalListContainer> {
                         itemCount: articleList.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ArticleCustomCard(article: articleList[index]);
-                        },
-                      ),
+                        }
+                      )
                     )
-                  ],
-                ),
-              ),
-            ),
+                  ]
+                )
+              )
+            )
           ));
   }
 }

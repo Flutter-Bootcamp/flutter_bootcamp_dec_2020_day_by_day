@@ -10,7 +10,7 @@ class ArticleCustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return article.imgUrl==null? const SizedBox() : GestureDetector(
       onTap: (){
         Navigator.of(context).push(
             MaterialPageRoute(builder: (BuildContext context)=> ArticleScreen(article: article,))
@@ -27,37 +27,35 @@ class ArticleCustomCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5)
               ),
-              child: article.imgUrl == null
-                  ? const Icon(Icons.error_outline_rounded)
-                  : ClipRRect(
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: Image.network(article.imgUrl,
-                fit: BoxFit.cover,),
+                fit: BoxFit.cover),
               ),
 
             ),
             Positioned(
               bottom: 10,
               child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                 alignment: Alignment.center,
                 width: 150,
-                height: 40,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.6),
                 ),
-                child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(article.price.toString(), style: const TextStyle(color: Colors.white)),
                     Text(article.description, overflow: TextOverflow.ellipsis,
                     style: const TextStyle(color: Colors.white),)
-                  ],
-                ),
-              ),
+                  ]
+                )
+              )
             )
           ]
         )
-      ),
+      )
     );
   }
 }

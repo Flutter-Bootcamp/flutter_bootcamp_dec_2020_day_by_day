@@ -5,14 +5,15 @@ import 'package:flutter_bootcamp_2020/widgets/address_custom_card.dart';
 import 'package:get/get.dart';
 
 class Profile extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AddressDeliveryController>(
         builder: (controller) => Card(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            height: 200.0 * controller.addressList.length,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10,0,10,10),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
